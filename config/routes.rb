@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   ##RESTful Resources and Routing:
   resources :users
 
+  resources :damage_reports, only: [:new, :create, :destroy]
+
 
 end
