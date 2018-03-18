@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   ##RESTful Resources and Routing:
 
+  resources :users
+
 
 end
