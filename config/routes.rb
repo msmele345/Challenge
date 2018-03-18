@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
 
-  ##static home page
+  ##Static home page
   root 'static_pages#home'
-
   ##Static Help Page displays in-App README 
-  get 'static_pages/help'
-
+  get 'static_pages/help', to: "static_pages#help"
   ##More about me:
-  get 'static_pages/about'
+  get 'static_pages/about', to: "static_pages#about"
 
 
+  ##RESTful Resources and Routing:
 
-  
 
 end
