@@ -7,9 +7,13 @@ Rails.application.routes.draw do
   ##More about me:
   get 'static_pages/about', to: "static_pages#about"
 
+  ##login/logout routes
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+
 
   ##RESTful Resources and Routing:
-
   resources :users
 
 
