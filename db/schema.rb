@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20180318225654) do
   create_table "attributes", force: :cascade do |t|
     t.string "attr_name"
     t.integer "attr_level"
-    t.boolean "is_primary"
     t.bigint "character_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,12 +38,14 @@ ActiveRecord::Schema.define(version: 20180318225654) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
-    t.integer "level"
+    t.integer "level", default: 1
+    t.string "primary_attr"
+    t.string "avatar_url"
     t.bigint "user_id"
-    t.bigint "class_id"
+    t.bigint "fighter_class_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["class_id"], name: "index_characters_on_class_id"
+    t.index ["fighter_class_id"], name: "index_characters_on_fighter_class_id"
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
@@ -63,10 +64,8 @@ ActiveRecord::Schema.define(version: 20180318225654) do
   create_table "fighter_classes", force: :cascade do |t|
     t.string "name"
     t.string "skill"
-    t.bigint "character_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["character_id"], name: "index_fighter_classes_on_character_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,10 +79,12 @@ ActiveRecord::Schema.define(version: 20180318225654) do
   end
 
   create_table "weapons", force: :cascade do |t|
-    t.string "type"
+    t.string "weapon_type"
     t.string "DMG_range"
     t.decimal "APS"
-    t.decimal "element_boost"
+    t.decimal "weapon_attr_modifier"
+    t.string "element_impact"
+    t.decimal "element_boost", default: "0.0"
     t.bigint "character_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

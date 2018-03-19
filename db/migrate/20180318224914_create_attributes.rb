@@ -3,7 +3,6 @@ class CreateAttributes < ActiveRecord::Migration[5.1]
     create_table :attributes do |t|
       t.string :attr_name
       t.integer :attr_level
-      t.boolean :is_primary
       t.references :character
 
       t.timestamps
