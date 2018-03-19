@@ -16,5 +16,9 @@ Rails.application.routes.draw do
   ##RESTful Resources and Routing:
   resources :users
 
+  resources :weapons, only: [:new, :create, :destroy, :index]
+  
+  resources :damage_reports, only: [:new, :create, :destroy, :index]
+
 
 end
