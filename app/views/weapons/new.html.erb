@@ -1,0 +1,32 @@
+<h1>Enter the Weapon Statistics Here:</h1>
+
+<div align="center" class="errors">
+  <%= render 'shared/errors', locals: {errors: @errors} if @errors %>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:weapon) do |f| %>
+      <%= f.label :weapon_type %>
+      <%= f.text_field :weapon_type %>
+
+      <%= f.label :DMG_range %>
+      <%= f.text_field :DMG_range %>
+
+      <%= f.label :weapon_attr_modifier %>
+      <%= f.text_field :weapon_attr_modifier %>
+
+      <%= f.label :APS %>
+      <%= f.text_field :APS %>
+
+      <%= f.label :element_boost %>
+      <%= f.text_field :element_boost %>
+
+      <%= f.label :element_impact %>
+      <%= f.text_field :element_impact %>
+
+      <%= f.submit "Create Damage Report", class: "button btn btn-primary" %>
+    <% end %>
+  <p align="center">Weapon will be tested with every attack</p>
+  </div>
+</div>

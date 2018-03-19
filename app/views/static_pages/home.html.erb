@@ -9,7 +9,7 @@
 
   <% if logged_in?  %>
         <p align='center' id="welcome">Welcome, <%= current_user.first_name %> Let's get started!</p>
-        <%= link_to "Create Damage Report", new_damage_report_path , class: "btn btn-sm btn-primary" %>
+        <%= link_to "Test New Weapon", new_weapon_path , class: "btn btn-sm btn-primary" %>
         <%= link_to "View All", damage_reports_path , class: "btn btn-sm btn-primary" %>
     <% else  %>
         <%= link_to "Register for The CopyCat Armory", new_user_path , class: "btn btn-sm btn-primary" %>
