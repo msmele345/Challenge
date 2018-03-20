@@ -1,2 +1,53 @@
-<h1>New Damage Report - Damage report shows all of the attacks</h1>
+<h1>New Damage Report</h1>
 
+<div align="center" class="errors">
+  <%= render 'shared/errors', locals: {errors: @errors} if @errors %>
+</div>
+
+<aside>
+  <section>
+    <%= p grab_character_names %>
+  </section>
+</aside>
+
+
+<aside>
+  <section>
+    <%= p grab_attack_names %>
+  </section>
+</aside>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_tag  "/damage_reports" do %>
+
+      <%= label_tag :character_name %>
+      <%= text_field_tag :character_name %>
+
+      <%= label_tag :experience_level %>
+      <%= text_field_tag :experience_level %>
+      
+
+      <%= label_tag :weapon_type %>
+      <%= text_field_tag :weapon_type %>
+
+      <%= label_tag :DMG_range %>
+      <%= text_field_tag :DMG_range %>
+
+      <%= label_tag :weapon_attr_modifier %>
+      <%= text_field_tag :weapon_attr_modifier %>
+
+      <%= label_tag :APS %>
+      <%= text_field_tag :APS %>
+
+      <%= label_tag :element_boost %>
+      <%= text_field_tag :element_boost %>
+
+      <%= label_tag :element_impact %>
+      <%= text_field_tag :element_impact %>
+
+      <%= submit_tag "Create Damage Report", class: "button btn btn-primary" %>
+    <% end %>
+  <p align="center">Weapon will be tested with every attack</p>
+  </div>
+</div>
