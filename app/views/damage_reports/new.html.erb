@@ -1,21 +1,20 @@
 <h1>New Damage Report</h1>
 
+<aside>
+  <section>
+    <ul>
+      <h3>APS LEGEND:</h3>
+      <dt>MACE:  1 APS </dt>
+      <dt>AXE:   1.2 APS</dt>
+      <dt>SWORD: 1.4 APS</dt>
+    </ul>
+  </section>
+</aside>
+
+
 <div align="center" class="errors">
   <%= render 'shared/errors', locals: {errors: @errors} if @errors %>
 </div>
-
-<aside>
-  <section>
-    <%= p grab_character_names %>
-  </section>
-</aside>
-
-
-<aside>
-  <section>
-    <%= p grab_attack_names %>
-  </section>
-</aside>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -27,6 +26,8 @@
       <%= label_tag :experience_level %>
       <%= text_field_tag :experience_level %>
       
+      <%= label_tag :weapon_name %>
+      <%= text_field_tag :weapon_name %>
 
       <%= label_tag :weapon_type %>
       <%= text_field_tag :weapon_type %>
@@ -40,7 +41,7 @@
       <%= label_tag :APS %>
       <%= text_field_tag :APS %>
 
-      <%= label_tag :element_boost %>
+      <%= label_tag "Element Boost %" %>
       <%= text_field_tag :element_boost %>
 
       <%= label_tag :element_impact %>
