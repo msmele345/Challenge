@@ -15,7 +15,7 @@
 <div align="center" class="errors">
   <%= render 'shared/errors', locals: {errors: @errors} if @errors %>
 </div>
-
+    <p align="center">New Character? For best results,  please <%= link_to "Enter Full Character Details", "#"%> first</p>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_tag  "/damage_reports" do %>
