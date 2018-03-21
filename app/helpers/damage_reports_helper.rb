@@ -108,5 +108,15 @@ module DamageReportsHelper
     table = "<table class=\"#{table_class}\"><thead>#{headers}</thead><tbody>#{cells}</tbody></table>"
   end
 
-  
+  ##Helper to create array of all attributes saved in the system
+  def list_attributes 
+    attributes = Attribute.all 
+    attributes.map {|attr| attr[:attr_name]}.unshift("None")
+  end 
+
+  def list_fighter_classes
+    classes = FighterClass.all 
+    classes.map {|fighter_class| fighter_class[:name]}.unshift("None")
+  end 
+
 end 

@@ -1,4 +1,4 @@
-<h1>Enter a new character here</h1>
+<h1>Character Details</h1>
 
 
 <div align="center" class="errors">
@@ -14,11 +14,15 @@
       <%= f.label :level %>
       <%= f.text_field :level %>
 
-      <%= f.label :primary_attribute %>
-      <%= f.text_field :primary_attribute %>
+      <%= f.label "Primary Attribute" %>
+     || <%= link_to "Create New Attributes", "#" %>
+      <%= f.select :primary_attr, list_attributes %>
 
       <%= f.label :avatar_url %>
       <%= f.text_field :avatar_url %>
+
+      <%= f.label "Fighter Class" %>
+      <%= f.select :fighter_class_id, list_fighter_classes %>
 
       <%= f.submit "Create", class: "button btn btn-primary" %>
     <% end %>
