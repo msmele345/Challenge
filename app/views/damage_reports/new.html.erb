@@ -15,7 +15,7 @@
 <div align="center" class="errors">
   <%= render 'shared/errors', locals: {errors: @errors} if @errors %>
 </div>
-    <p align="center">New Character? For best results,  please <%= link_to "Enter Full Character Details", "#"%> first</p>
+    <p align="center">New Character? For best results,  please <%= link_to "register", new_character_path %> the player before moving on.</p>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_tag  "/damage_reports" do %>
@@ -51,9 +51,12 @@
     <% end %>
   <p align="center">Weapon will be tested with every attack</p>
   </div>
-</div>
+</div><br>
+
+  <h2>Recent Results:</h2>
+  <strong ><%= link_to "View All Reports", damage_reports_path %>  </strong>
 
 
-<div>
-  <%= ToTable(raw_damage_reports,"table").html_safe %>
+<div class="table-display">
+  <%= ToTable(last_damage_report_table,"table").html_safe %>
 </div>

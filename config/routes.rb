@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :users
 
   resources :weapons, only: [:new, :create, :destroy, :index]
+
+  resources :characters, only: [:new, :create, :destroy, :update]
   
   resources :damage_reports, only: [:new, :create, :destroy, :index]
 
