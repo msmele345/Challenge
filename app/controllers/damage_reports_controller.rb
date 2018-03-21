@@ -11,35 +11,43 @@ class DamageReportsController < ApplicationController
 
 
     def create
-      @weapon = Weapon.new(weapon_params)      
-      
+      #Identify the Character from Params     
+      @character = Character.find_by(:name => params[:character_name])
+      ##Call helper to grab an array of all the current attack object names from the db
+      @attacks = grab_attack_names 
+      ##If the weapon passes unique validation, the weapon is saved to the db. Otherwise, located it by the weapon name from params
+      @weapon = Weapon.new(weapon_params)  
       if @weapon.save 
         flash[:success] = "We noticed this is a new weapon. It has been successfully added to the database!"
       else  
         @weapon = Weapon.find_by(:weapon_name => params[:weapon_name])
       end 
 
-      @character = Character.find_by(:name => params[:character_name])
       @damage_range = parse_dmg_range(params[:DMG_range])
       @character_input = character_input(@weapon.weapon_attr_modifier, @character.level)
-      @attacks = grab_attack_names 
-      @element_check = false
+      
 
 
-      @attacks.each do |attack_name| ## this wont work if attacks are deleted (indexes incorrect)
+      @attacks.each do |attack_name| 
         attack = Attack.find_by(:attack_name => attack_name)
         attack_dmg = attack.DMG_impact
-        # p "********"
+        @element_check = false
+        
         # ep @weapon.element_impact
         # ep attack.element
-        ep attack
+        
         if attack.element === @weapon.element_impact
           @element_check = true  
         end 
+        
+        p min_damage = calculate_min_damage(@damage_range[:min_damage], @character_input, attack_dmg, @weapon.element_boost, @element_check)
+        
+        p max_damage = calculate_max_damage(@damage_range[:max_damage], @character_input, attack_dmg, @weapon.element_boost, @element_check)
 
-        p calculate_min_damage(@damage_range[:min_damage], @character_input, attack_dmg, @weapon.element_boost, @element_check )
-
-        # damage_report = DamageReport.create!(:weapon_id => @weapon.id, :attack_id => attack.id, :min_damage => helper method, :max_damage => helper_method, :damage_per_second)
+        damage_per_second = calculate_damage_per_second(min_damage, max_damage, @weapon)
+        ep damage_per_second
+        
+        damage_report = DamageReport.create!(:weapon_id => @weapon.id, :attack_id => attack.id, :min_damage => min_damage, :max_damage => max_damage, :damage_per_second => damage_per_second)
       end 
 
       # def calculate_min_damage(weapon_min, character_input, attack_dmg, element_boost, element_impact = nil)

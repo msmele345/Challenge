@@ -24,11 +24,7 @@ module DamageReportsHelper
   end 
 
   def calculate_min_damage(weapon_min, character_input, attack_dmg, element_boost, element_impact = nil)
-    # p weapon_min
-    # p character_input
-    # p attack_dmg
-    # p element_boost
-    ep element_impact
+    # ep element_impact
     element_dmg = element_boost / 100
     base_amount =  weapon_min * (character_input / 100) * (attack_dmg / 100)
 
@@ -39,21 +35,35 @@ module DamageReportsHelper
     base_amount < 1 ? base_amount * 100 : base_amount
   end 
 
-  def calculate_max_damage(max_damage, character_level, attack_dmg)
-    
+  def calculate_max_damage(weapon_max, character_input, attack_dmg, element_boost, element_impact = nil)
+    # ep element_impact
+    ##Convert from % to decimal form 
+    element_dmg = element_boost / 100 
+    ##Total Attack
+    base_amount =  weapon_max * (character_input / 100) * (attack_dmg / 100) 
+    ##Add extra element damage if there is a match
+    if element_impact 
+      boost_amt = base_amount * element_dmg
+      return base_amount + boost_amt
+    end 
+    base_amount < 1 ? base_amount * 100 : base_amount
   end 
 
 
-
-  ##Initial Math Helpers for 3 known attacks: 
-
-  def punch_attack
-  end 
-
-  def fire_attack
-  end 
-
-  def cold_attack 
+  def calculate_damage_per_second(min_damage, max_damage, weapon)
+    p "**************"
+    # p weapon.APS 
+    # p min_damage
+    # p max_damage
+    min_damage_per_second = min_damage * weapon.APS
+    max_damage_per_second = max_damage * weapon.APS
+    if weapon.APS > 1 
+      # (min_damage_per_second + max_damage_per_second) / 2
+      total =  (min_damage * weapon.APS) + (max_damage * weapon.APS)
+      total / 2
+    else 
+      # return (min_damage + max_damage) / 2
+    end 
   end 
   
 end 
