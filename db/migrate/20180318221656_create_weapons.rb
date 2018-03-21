@@ -3,10 +3,10 @@ class CreateWeapons < ActiveRecord::Migration[5.1]
     create_table :weapons do |t|
       t.string :weapon_type
       t.string :DMG_range
-      t.decimal :APS
-      t.decimal :weapon_attr_modifier
+      t.float :APS
+      t.float :weapon_attr_modifier
       t.string  :element_impact
-      t.decimal :element_boost, :default => 0
+      t.float :element_boost, :default => 0
       t.references :character 
 
 

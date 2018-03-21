@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180318225654) do
+ActiveRecord::Schema.define(version: 20180320154947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20180318225654) do
   create_table "attacks", force: :cascade do |t|
     t.string "attack_name"
     t.string "attack_type"
-    t.decimal "APS_impact"
-    t.decimal "DMG_impact"
+    t.float "APS_impact"
+    t.float "DMG_impact"
     t.string "element"
     t.bigint "character_id"
     t.datetime "created_at", null: false
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 20180318225654) do
   end
 
   create_table "damage_reports", force: :cascade do |t|
-    t.decimal "min_damage"
-    t.decimal "max_damage"
-    t.decimal "damage_per_second"
+    t.float "min_damage"
+    t.float "max_damage"
+    t.float "damage_per_second"
     t.bigint "weapon_id"
     t.bigint "attack_id"
     t.datetime "created_at", null: false
@@ -81,13 +81,14 @@ ActiveRecord::Schema.define(version: 20180318225654) do
   create_table "weapons", force: :cascade do |t|
     t.string "weapon_type"
     t.string "DMG_range"
-    t.decimal "APS"
-    t.decimal "weapon_attr_modifier"
+    t.float "APS"
+    t.float "weapon_attr_modifier"
     t.string "element_impact"
-    t.decimal "element_boost", default: "0.0"
+    t.float "element_boost", default: 0.0
     t.bigint "character_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "weapon_name"
     t.index ["character_id"], name: "index_weapons_on_character_id"
   end
 
