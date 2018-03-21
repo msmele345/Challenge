@@ -185,6 +185,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-sass (= 3.3.7)
+  builder
   extra_print
   faker
   jbuilder (~> 2.5)

@@ -72,6 +72,13 @@ class DamageReportsController < ApplicationController
       ##OR iterate through attacks. Setup if statements for name chaecks to apply defaults 
     end 
 
+
+      xm = Builder::XmlMarkup.new(:indent => 2)
+      xm.table {
+      # xm.tr { data.each { |key| xm.th(key)}}
+      # data.each { |row| xm.tr { row.each { |value| xm.td(value)}}}
+}
+
     def destroy 
     end 
 
