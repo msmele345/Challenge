@@ -65,5 +65,48 @@ module DamageReportsHelper
       # return (min_damage + max_damage) / 2
     end 
   end 
+
+
+
+  def ToCell (tag,value)
+    if value.instance_of?(String)
+      value = value.split
+    end 
+    value.map{ |c| "<#{tag}>#{c}</#{tag}>" }.join   
+  end
+
+  def last_damage_report_table
+    reports = DamageReport.first(3)
+    attacks = Attack.all 
+    table_array = []
+    first_row = ["Attack","Minimum", "Maximum", "DPS"]
+    reports.each_with_index do |report, index|
+      damage_stats = [attacks[index][:attack_name],report.min_damage, report.max_damage, report.damage_per_second]
+      table_array << damage_stats
+    end 
+    table_array.unshift(first_row)
+  end 
+
+  def all_damage_reports_table
+    reports = DamageReport.all
+    attacks = Attack.all 
+    table_array = []
+    first_row = ["Attack", "Weapon", "Minimum", "Maximum", "DPS"]
+    reports.each_with_index do |report, index|
+      damage_stats = [attacks[index][:attack_name], report.weapon, report.min_damage, report.max_damage, report.damage_per_second]
+      table_array << damage_stats
+    end 
+    table_array.unshift(first_row)
+  end 
+
+  def ToTable (table_array, table_class)
+    headers = "<tr>" + ToCell('th',table_array[0]) + "</tr>"
+    cells = table_array[1..table_array.count].map{ |each_row|
+        "<tr>#{ToCell('td',each_row)}</tr>"             
+    }.join
+
+    table = "<table class=\"#{table_class}\"><thead>#{headers}</thead><tbody>#{cells}</tbody></table>"
+  end
+
   
 end 
