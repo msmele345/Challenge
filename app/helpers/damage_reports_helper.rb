@@ -24,7 +24,6 @@ module DamageReportsHelper
   end 
 
   def calculate_min_damage(weapon_min, character_input, attack_dmg, element_boost, element_impact = nil)
-    # ep element_impact
     element_dmg = element_boost / 100
     base_amount =  weapon_min * (character_input / 100) * (attack_dmg / 100)
 
@@ -36,7 +35,6 @@ module DamageReportsHelper
   end 
 
   def calculate_max_damage(weapon_max, character_input, attack_dmg, element_boost, element_impact = nil)
-    # ep element_impact
     ##Convert from % to decimal form 
     element_dmg = element_boost / 100 
     ##Total Attack
