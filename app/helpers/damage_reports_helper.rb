@@ -109,12 +109,14 @@ module DamageReportsHelper
   ##Helper to create array of all attributes saved in the system
   def list_attributes 
     attributes = Attribute.all 
-    attributes.map {|attr| attr[:attr_name]}.unshift("None")
+    attributes.map {|attr| attr[:attr_name]}
   end 
+
+  ##Helper to show a collection of saved fighter_class objects in the db to choose from on character creation 
 
   def list_fighter_classes
     classes = FighterClass.all 
-    classes.map {|fighter_class| fighter_class[:name]}.unshift("None")
+    classes.map {|fighter_class| fighter_class[:name]}
   end 
 
 end 

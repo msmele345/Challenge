@@ -153,3 +153,32 @@ input {
   font-weight: bold;
   letter-spacing: 2px; 
 }
+
+.characters-box ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.characters-box li {
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  padding: 25px;
+  width: 300px;
+  margin-top: 70px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.characters-box li p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.25em;
+}
+
+#char-name {
+  font-size: 2em;
+  letter-spacing: 2px;
+  font-family: 'Nanum Myeongjo', serif;
+}

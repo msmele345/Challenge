@@ -1,5 +1,6 @@
 class DamageReportsController < ApplicationController 
 
+    before_action :redirect_unless_logged_in
 
     def index
       @reports = DamageReport.all.order(:created_at)
