@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         flash[:success] = "Welcome to the Armory! Let's Test Some Weapons!"
-        redirect_to user_path
+        redirect_to user_path(@user.id)
       else
         @errors = @user.errors.full_messages
         render :new
