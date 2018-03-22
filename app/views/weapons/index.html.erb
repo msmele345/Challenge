@@ -1,0 +1,19 @@
+<h1>All the Weapons</h1>
+
+<%= link_to "Create New Weapon", new_weapon_path, class: "center" %>
+
+<div class="characters-box">
+ <ul>
+      <% @weapons.each do |weapon|  %>
+      <li>
+        Type:<p id="char-name"><%= weapon.weapon_type %></p>
+        Damage Range:<p><%= weapon.DMG_range %></p>  
+        Attacks Per Second:<p><%= weapon.APS %></p>   
+        Weapon Modifier:<p><%= weapon.weapon_attr_modifier %></p>
+        Element:<p><%= weapon.element_impact %></p>           
+        Element Modifier:<p><%= weapon.element_boost %>%</p>               
+        <%= link_to "Delete", weapon_path(weapon.id), method: :delete, class: "btn-primary btn-xs" %>
+      </li>
+    <% end %>
+ </ul>
+</div>

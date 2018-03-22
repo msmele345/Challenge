@@ -53,7 +53,7 @@ class DamageReportsController < ApplicationController
       
       ##Try display on index page with each over damage reports 
       ##work on displays 
-      ##OR iterate through attacks. Setup if statements for name chaecks to apply defaults 
+      ##OR iterate through attacks. Setup if statements for name checks to apply defaults 
     end 
 
     def destroy 

@@ -56,8 +56,8 @@ class CharactersController < ApplicationController
   end 
 
   def destroy
-    character_id = params["id"].to_i
-    @character = Character.find_by(id: params["id"].to_i)
+    character_id = params["id"]
+    @character = Character.find_by(id: params["id"])
     @character.destroy
     redirect_to characters_path
   end

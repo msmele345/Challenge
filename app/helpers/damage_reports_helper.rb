@@ -9,9 +9,6 @@ module DamageReportsHelper
   ##Helper to display all active characters on damage report create view  
   def grab_character_names
     characters = Character.all.pluck(:name)
-    size = characters.length
-    index_array = (0..size).to_a
-    characters.zip(index_array)
   end
 
   def grab_attack_names
@@ -49,10 +46,6 @@ module DamageReportsHelper
 
 
   def calculate_damage_per_second(min_damage, max_damage, weapon)
-    p "**************"
-    # p weapon.APS 
-    # p min_damage
-    # p max_damage
     min_damage_per_second = min_damage * weapon.APS
     max_damage_per_second = max_damage * weapon.APS
     if weapon.APS > 1 
@@ -60,7 +53,7 @@ module DamageReportsHelper
       total =  (min_damage * weapon.APS) + (max_damage * weapon.APS)
       total / 2
     else 
-      # return (min_damage + max_damage) / 2
+      return (min_damage + max_damage) / 2
     end 
   end 
 
@@ -118,5 +111,15 @@ module DamageReportsHelper
     classes = FighterClass.all 
     classes.map {|fighter_class| fighter_class[:name]}
   end 
+
+    ##Helper to display all active characters on damage report create view  
+  def grab_character_names
+    characters = Character.all.pluck(:name)
+  end
+  
+  def grab_attack_names
+    attacks = Attack.all.pluck(:attack_name)
+  end 
+
 
 end 

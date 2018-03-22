@@ -15,12 +15,12 @@
 <div align="center" class="errors">
   <%= render 'shared/errors', locals: {errors: @errors} if @errors %>
 </div>
-    <p align="center">New Character? For best results,  please <%= link_to "register", new_character_path %> the player before moving on.</p>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_tag  "/damage_reports" do %>
 
-      <%= label_tag :character_name %>
+    <p align="center">Please register new players here: <%= link_to "Create Character", new_character_path %> </p>
+      <%= label_tag :character_name %>  
       <%= text_field_tag :character_name %>
 
       <%= label_tag :experience_level %>
