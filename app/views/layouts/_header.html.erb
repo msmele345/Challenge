@@ -4,20 +4,27 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", "#" %></li>
         <% if logged_in? %>
-          <li><%= link_to "Profile", "#" %></li>
+          <li><%= link_to "Weapons", weapons_path %></li>
+          <li><%= link_to "Characters", characters_path %></li>
+          <li><%= link_to "Attacks", attacks_path %></li> 
+          <li><%= link_to "Damage Reports", damage_reports_path %></li>                   
+                            
+          
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
+              Craft New <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "View Damage Reports", damage_reports_path %></li> 
+              <li><%= link_to "Profile", "#" %></li> 
               <li class="divider"></li>
-          
+
+              <li><%= link_to "New Damage Report", new_damage_report_path %></li>
               <li><%= link_to "Add Characters", new_character_path %></li>
-              <li><%= link_to "Create Weapons", "#" %></li>
-              <li><%= link_to "Devise Attacks", "#" %></li>
+              <li><%= link_to "Add Weapons", new_weapon_path %></li>
+              <li><%= link_to "Add Attacks", new_attack_path %></li>
+              <li><%= link_to "Add Attributes", new_attribute_path %></li>
+              
               
 
               <li class="divider"></li>

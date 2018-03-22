@@ -9,9 +9,6 @@ module DamageReportsHelper
   ##Helper to display all active characters on damage report create view  
   def grab_character_names
     characters = Character.all.pluck(:name)
-    size = characters.length
-    index_array = (0..size).to_a
-    characters.zip(index_array)
   end
 
   def grab_attack_names
@@ -24,7 +21,6 @@ module DamageReportsHelper
   end 
 
   def calculate_min_damage(weapon_min, character_input, attack_dmg, element_boost, element_impact = nil)
-    # ep element_impact
     element_dmg = element_boost / 100
     base_amount =  weapon_min * (character_input / 100) * (attack_dmg / 100)
 
@@ -36,7 +32,6 @@ module DamageReportsHelper
   end 
 
   def calculate_max_damage(weapon_max, character_input, attack_dmg, element_boost, element_impact = nil)
-    # ep element_impact
     ##Convert from % to decimal form 
     element_dmg = element_boost / 100 
     ##Total Attack
@@ -51,10 +46,6 @@ module DamageReportsHelper
 
 
   def calculate_damage_per_second(min_damage, max_damage, weapon)
-    p "**************"
-    # p weapon.APS 
-    # p min_damage
-    # p max_damage
     min_damage_per_second = min_damage * weapon.APS
     max_damage_per_second = max_damage * weapon.APS
     if weapon.APS > 1 
@@ -62,7 +53,7 @@ module DamageReportsHelper
       total =  (min_damage * weapon.APS) + (max_damage * weapon.APS)
       total / 2
     else 
-      # return (min_damage + max_damage) / 2
+      return (min_damage + max_damage) / 2
     end 
   end 
 
@@ -108,5 +99,27 @@ module DamageReportsHelper
     table = "<table class=\"#{table_class}\"><thead>#{headers}</thead><tbody>#{cells}</tbody></table>"
   end
 
+  ##Helper to create array of all attributes saved in the system
+  def list_attributes 
+    attributes = Attribute.all 
+    attributes.map {|attr| attr[:attr_name]}
+  end 
+
+  ##Helper to show a collection of saved fighter_class objects in the db to choose from on character creation 
+
+  def list_fighter_classes
+    classes = FighterClass.all 
+    classes.map {|fighter_class| fighter_class[:name]}
+  end 
+
+  ##Helper to display all active characters on damage report create view  
+  def grab_character_names
+    characters = Character.all.pluck(:name)
+  end
   
+  def grab_attack_names
+    attacks = Attack.all.pluck(:attack_name)
+  end 
+
+
 end 

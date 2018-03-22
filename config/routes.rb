@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 
   resources :weapons, only: [:new, :create, :destroy, :index]
 
-  resources :characters, only: [:new, :create, :destroy, :update]
+  resources :characters
+
+  resources :attacks, only: [:new, :create, :destroy, :index]
+
+  resources :attributes, only: [:new, :create, :destroy, :index]
   
   resources :damage_reports, only: [:new, :create, :destroy, :index]
 

@@ -1,5 +1,6 @@
 class DamageReportsController < ApplicationController 
 
+    before_action :redirect_unless_logged_in
 
     def index
       @reports = DamageReport.all.order(:created_at)
@@ -48,9 +49,11 @@ class DamageReportsController < ApplicationController
 
       redirect_to damage_reports_path
       ##TODO 
+      ## Account for errors 
+      
       ##Try display on index page with each over damage reports 
       ##work on displays 
-      ##OR iterate through attacks. Setup if statements for name chaecks to apply defaults 
+      ##OR iterate through attacks. Setup if statements for name checks to apply defaults 
     end 
 
     def destroy 

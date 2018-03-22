@@ -1,0 +1,20 @@
+<h1>All the Characters</h1>
+
+<%= link_to "Create New Character", new_character_path, class: "center" %>
+
+<div class="characters-box">
+ <ul>
+      <% @characters.each do |character|  %>
+      <li>
+        <p id="char-name"><%= character.name %></p>
+        <%= image_tag(character.avatar_url) %><br><br>
+        Level:<p><%= character.level %></p>
+        Class:<p><%= character.fighter_class.name %></p>  
+        Skilled in:<p><%= character.fighter_class.skill %></p>        
+        Primary Attribute:<p><%= character.primary_attr %></p>
+        <%= link_to "Delete", character_path(character.id), method: :delete, class: "btn-primary btn-xs" %>
+        <%= link_to "Edit Character", edit_character_path(character.id), class: "btn-primary btn-xs"  %>
+      </li>
+    <% end %>
+ </ul>
+</div>

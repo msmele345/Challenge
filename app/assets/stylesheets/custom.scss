@@ -144,7 +144,7 @@ input {
   font-size: 1.7em;
   font-family: 'Nanum Myeongjo', serif;
   font-weight: bold;
-  letter-spacing: 2px; 
+  letter-spacing: 2px;  
 }
 
 #jumbotron-header1{
@@ -152,4 +152,59 @@ input {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   letter-spacing: 2px; 
+}
+
+.characters-box ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.characters-box li {
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  padding: 25px;
+  width: 300px;
+  margin-top: 70px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.characters-box li p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.25em;
+}
+
+#char-name {
+  font-size: 2em;
+  letter-spacing: 2px;
+  font-family: 'Nanum Myeongjo', serif;
+}
+
+
+.attacks-box ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.attacks-box li { 
+  background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+  padding: 25px;
+  width: 300px;
+  margin-top: 70px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.attacks-box li p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.25em;
 }

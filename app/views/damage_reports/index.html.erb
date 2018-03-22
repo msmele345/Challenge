@@ -1,5 +1,7 @@
 <h1>Damage Reports Directory</h1>
 
+<%= link_to "Create New Damage Report", new_damage_report_path, class: "center" %>
+
 <div class="table-display">
   <%= ToTable(last_damage_report_table,"table").html_safe %>
 </div>

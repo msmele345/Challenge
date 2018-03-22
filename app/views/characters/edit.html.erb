@@ -1,6 +1,4 @@
-<h1>Character Details</h1>
-
-
+<h1>Edit Character</h1>
 
 <div align="center" class="errors">
   <%= render 'shared/errors', locals: {errors: @errors} if @errors %>
@@ -8,7 +6,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with url: "/characters", method: "POST" do |f| %>
+    <%= form_for (@character) do |f| %>
       <%= f.label :name %>
       <%= f.text_field :name %>
 
@@ -16,7 +14,7 @@
       <%= f.text_field :level %>
 
       <%= f.label "Primary Attribute" %>
-     || <%= link_to "Create New Attributes", "#" %>
+     || <%= link_to "Create New Attributes", "#" %> 
       <%= f.select :primary_attr, list_attributes %>
 
       <%= f.label :avatar_url %>
@@ -25,7 +23,7 @@
       <%= f.label "Fighter Class" %>
       <%= f.select :fighter_class_id, list_fighter_classes %>
 
-      <%= f.submit "Create", class: "button btn btn-primary" %>
+      <%= f.submit "Update", class: "button btn btn-primary" %>
     <% end %>
   </div>
 </div>

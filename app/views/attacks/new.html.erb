@@ -1,0 +1,25 @@
+<h1>New Attack </h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+     <%= form_with(model: @attack, local: true) do |f| %>
+
+      <%= f.label :attack_name %>
+      <%= f.text_field :attack_name %>
+
+      <%= f.label :attack_type %>
+      <%= f.text_field :attack_type %>
+
+      <%= f.label :APS_impact %>
+      <%= f.text_field :APS_impact %>
+
+      <%= f.label :DMG_impact %>
+      <%= f.text_field :DMG_impact %>
+
+      <%= f.label :element %>
+      <%= f.text_field :element %>
+
+      <%= f.submit "Create Attack", class: "button btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
