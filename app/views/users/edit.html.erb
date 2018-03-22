@@ -1,0 +1,26 @@
+<h2>Update Personal Information for <%= current_user.first_name %></h2>
+
+
+<div align="center" class="errors">
+  <%= render 'shared/errors', locals: {errors: @errors} if @errors %>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.submit "Update", class: "button btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

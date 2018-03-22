@@ -16,7 +16,7 @@ class DamageReportsController < ApplicationController
       @character = Character.find_by(:name => params[:character_name])
       ##Call helper to grab an array of all the current attack object names from the db
       @attacks = grab_attack_names 
-      ##If the weapon passes unique validation, the weapon is saved to the db. Otherwise, located it by the weapon name from params
+      ##If the weapon passes unique validation, the weapon is saved to the db. Otherwise, its located by the weapon name from params
       @weapon = Weapon.new(weapon_params)  
       if @weapon.save 
         flash[:success] = "We noticed this is a new weapon. It has been successfully added to the database!"
@@ -48,12 +48,7 @@ class DamageReportsController < ApplicationController
       end 
 
       redirect_to damage_reports_path
-      ##TODO 
-      ## Account for errors 
-      
-      ##Try display on index page with each over damage reports 
-      ##work on displays 
-      ##OR iterate through attacks. Setup if statements for name checks to apply defaults 
+
     end 
 
     def destroy 
