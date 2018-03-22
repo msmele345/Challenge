@@ -112,7 +112,7 @@ module DamageReportsHelper
     classes.map {|fighter_class| fighter_class[:name]}
   end 
 
-    ##Helper to display all active characters on damage report create view  
+  ##Helper to display all active characters on damage report create view  
   def grab_character_names
     characters = Character.all.pluck(:name)
   end

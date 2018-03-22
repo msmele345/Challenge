@@ -14,12 +14,13 @@ class AttributesController < ApplicationController
       @attribute = Attribute.new(attribute_params)
       ##Find character by name from form menu 
       @character = Character.find_by(name: params[:character_id])
-      ep @character
+      
       ##Assign attribute to specific character
       @attribute.character_id = @character.id
 
   
       if @attribute.save
+        @character.char_attributes << @attribute
         flash[:success] = "Attribute Successfully Created"
         redirect_to attributes_path
       else 

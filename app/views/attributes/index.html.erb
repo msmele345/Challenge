@@ -7,9 +7,7 @@
  <ul>
       <% @attributes.each do |attribute|  %>
       <li>
-        Attribute Name:<p id="char-name"><%= attribute.attr_name %></p>
-        Attribute Level:<p><%= attribute.attr_level %></p>  
-        Assigned To:<p><%= attribute.character.name %></p>                 
+        Attribute Name:<p id="char-name"><%= attribute.attr_name %></p>         
         <%= link_to "Delete", attribute_path(attribute.id), method: :delete, class: "btn-primary btn-xs" %>
       </li>
     <% end %>
