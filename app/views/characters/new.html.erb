@@ -16,7 +16,7 @@
       <%= f.text_field :level %>
 
       <%= f.label "Primary Attribute" %>
-     || <%= link_to "Create New Attributes", "#" %>
+     || <%= link_to "Create New Attributes", new_attribute_path %>
       <%= f.select :primary_attr, list_attributes %>
 
       <%= f.label :avatar_url %>
