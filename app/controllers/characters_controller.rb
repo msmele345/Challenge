@@ -15,15 +15,15 @@ class CharactersController < ApplicationController
     ##Set the owner (user) of the character
     @new_character.user_id = current_user.id
     ## Take the params string and Find the attribute object in the db
-    @primary_attribute = Attribute.find_by(:attr_name => params[:character][:primary_attr])
+    @primary_attribute = Attribute.find_by(:attr_name => params[:primary_attr])
     ##Take the params string and Find the Fighter Class object 
-    @fighter_class = FighterClass.find_by(:name => params[:character][:fighter_class_id])
+    @fighter_class = FighterClass.find_by(:name => params[:fighter_class_id])
     ##Assign the fighter class that the character belongs too
     @new_character.fighter_class_id = @fighter_class.id
 
     if @new_character.save 
       ##assign attribute object to characers attributes collection
-      @new_character.character_attributes << @primary_attribute
+      @new_character.char_attributes << @primary_attribute
       flash[:success] = "Character has been saved! Let's test some weapons..."
       redirect_to root_path
     else 
@@ -42,9 +42,11 @@ class CharactersController < ApplicationController
   end 
 
   def update 
+    ep params 
     @character = Character.find_by(:id => params["id"])   
+    @fighter_class = FighterClass.find_by(:name => params[:character][:fighter_class_id])
     if @character.update_attributes(non_fighter_params)
-      @fighter_class = FighterClass.find_by(:name => params[:character][:fighter_class_id])
+      ep @fighter_class
       ##Assign the fighter class that the character belongs too if changed
       @character.update_attribute(:fighter_class_id, @fighter_class.id)
       flash[:success] == "Character Updated"
@@ -65,11 +67,11 @@ class CharactersController < ApplicationController
   private 
 
   def character_params
-    params.require(:character).permit(:name, :level, :primary_attr, :avatar_url, :user_id, :fighter_class_id)
+    params.permit(:name, :level, :primary_attr, :avatar_url, :user_id, :fighter_class_id)
   end 
 
   def non_fighter_params 
-    params.require(:character).permit(:name, :level, :primary_attr, :avatar_url)
+    params.require(:character).permit(:name, :level, :primary_attr, :avatar_url, :fighter_class_id)
   end 
 
 
