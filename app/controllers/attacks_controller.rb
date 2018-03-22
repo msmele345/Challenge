@@ -13,7 +13,7 @@ class AttacksController < ApplicationController
 
     if @attack.save
       flash[:success] = "Attack Successfully Created"
-      redirect_to characters_path
+      redirect_to attacks_path 
     else 
       @errors = @attack.errors.full_messages
       render :new
@@ -29,6 +29,6 @@ class AttacksController < ApplicationController
 
   private 
   def attack_params
-    params.permit(:attack_name, :attack_type, :APS_impact, :DMG_impact, :element, :character_id )
+    params.require(:attack).permit(:attack_name, :attack_type, :APS_impact, :DMG_impact, :element, :character_id )
   end
 end
