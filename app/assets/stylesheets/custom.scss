@@ -178,7 +178,7 @@ input {
   font-size: 1.25em;
 }
 
-#char-name {
+.char-name {
   font-size: 2em;
   letter-spacing: 2px;
   font-family: 'Nanum Myeongjo', serif;
@@ -207,4 +207,17 @@ input {
 .attacks-box li p {
   font-family: 'Raleway', sans-serif;
   font-size: 1.25em;
+}
+
+#process-header {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2.5em;
+  letter-spacing: 2px;
+  font-weight: 400; 
+}
+
+.author-pic {
+  float: right;
+  height: 200px;
+  max-width: 600px;
 }

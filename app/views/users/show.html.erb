@@ -1,10 +1,22 @@
-<h1>All the Characters</h1>
+<h2><%= current_user.first_name %>'s Profile</h2>
 
-<%= link_to "Create New Character", new_character_path, class: "btn-primary btn-xs" %>
+<div class="user-details">
+  <ul>
+    First Name:<dt><%= @user.first_name %></dt><br>
+    Last Name: <dt><%= @user.last_name %></dt><br>
+    Email: <dt><%= @user.email %></dt><br>
+    <dt><%= link_to "Update Personal Information", edit_user_path(@user.id), class: "btn-primary btn-xs"  %></dt>
+  </ul>
+</div>
+
+
+
+
+<h2><%= current_user.first_name %>'s Saved Characters:</h2>
 
 <div class="characters-box">
  <ul>
-      <% @characters.each do |character|  %>
+      <% @user.characters.each do |character|  %>
       <li>
         <p class="char-name"><%= character.name %></p>
         <%= image_tag(character.avatar_url) %><br><br>

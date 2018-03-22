@@ -9,8 +9,7 @@ class WeaponsController < ApplicationController
     end 
 
     def create 
-
-      
+      ##See DamageReports Create for Weapon create logic
     end 
 
 

@@ -1,11 +1,11 @@
 <h1>All the Attacks</h1>
 
-<%= link_to "Create New Attack", new_attack_path, class: "center" %>
+<%= link_to "Create New Attack", new_attack_path, class: "btn-primary btn-xs" %>
 <div class="attacks-box">
  <ul>
       <% @attacks.each do |attack|  %>
       <li>
-        <p id="char-name"><%= attack.attack_name %></p>
+        <p class="char-name"><%= attack.attack_name %></p>
         Attack Type:<p><%= attack.attack_type %></p>  
         Attacks Per Second Impact:<p><%= attack.APS_impact %></p>   
         Damage Impact:<p><%= attack.DMG_impact %></p>

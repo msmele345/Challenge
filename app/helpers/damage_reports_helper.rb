@@ -6,14 +6,6 @@ module DamageReportsHelper
     hash_display = {:min_damage => number_array[0], :max_damage => number_array[1]} 
   end 
 
-  ##Helper to display all active characters on damage report create view  
-  def grab_character_names
-    characters = Character.all.pluck(:name)
-  end
-
-  def grab_attack_names
-    attacks = Attack.all.pluck(:attack_name)
-  end 
 
   def character_input(weapon_attr_modifier, level)
     total_character_damage = ((level * 10 ) + weapon_attr_modifier).to_f
@@ -72,7 +64,7 @@ module DamageReportsHelper
     table_array = []
     first_row = ["Attack","Minimum", "Maximum", "DPS"]
     reports.each_with_index do |report, index|
-      damage_stats = [attacks[index][:attack_name],report.min_damage, report.max_damage, report.damage_per_second]
+      damage_stats = [attacks[index][:attack_name], report.min_damage, report.max_damage, report.damage_per_second]
       table_array << damage_stats
     end 
     table_array.unshift(first_row)
@@ -82,9 +74,9 @@ module DamageReportsHelper
     reports = DamageReport.all
     attacks = Attack.all 
     table_array = []
-    first_row = ["Attack", "Weapon", "Minimum", "Maximum", "DPS"]
+    first_row = ["Attack", "Creation Date:", "Minimum", "Maximum", "DPS"]
     reports.each_with_index do |report, index|
-      damage_stats = [attacks[index][:attack_name], report.weapon, report.min_damage, report.max_damage, report.damage_per_second]
+      damage_stats = [attacks[index][:attack_name], set_date(report.created_at), report.min_damage, report.max_damage, report.damage_per_second]
       table_array << damage_stats
     end 
     table_array.unshift(first_row)
@@ -120,6 +112,10 @@ module DamageReportsHelper
   def grab_attack_names
     attacks = Attack.all.pluck(:attack_name)
   end 
+
+  def set_date(date)
+    date.strftime("%m/%d/%y")
+  end
 
 
 end 
