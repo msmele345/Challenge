@@ -10,8 +10,10 @@
       <%= f.label "Level" %>
       <%= f.text_field :attr_level %>
 
+    <% if grab_character_names %>
       <%= f.label "Assign to Character:" %>
       <%= f.select :character_id, grab_character_names %>
+    <% end %>
 
       <%= f.submit "Create Attribute", class: "button btn btn-primary" %>
     <% end %>
