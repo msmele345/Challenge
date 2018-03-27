@@ -13,7 +13,8 @@ class DamageReportsController < ApplicationController
 
     def create
       #Identify the Character from Params     
-      @character = Character.find_by(:name => params[:character_name])
+      @character = Character.find_by(:name => params[:character_name].strip)
+      ##Create control flow for nil character searches 
       ##Call helper to grab an array of all the current attack object names from the db
       @attacks = grab_attack_names 
       ##If the weapon passes unique validation, the weapon is saved to the db. Otherwise, its located by the weapon name from params
@@ -25,7 +26,11 @@ class DamageReportsController < ApplicationController
       end 
 
       @damage_range = parse_dmg_range(params[:DMG_range])
+
+
       @character_input = character_input(@weapon.weapon_attr_modifier, @character.level)
+
+
       
 
 
@@ -61,7 +66,7 @@ class DamageReportsController < ApplicationController
     end 
 
     def character_params
-      params.permit(:character_name, :experience_level)
+      params.permit(:character_name, :level)
     end 
 
 end 
