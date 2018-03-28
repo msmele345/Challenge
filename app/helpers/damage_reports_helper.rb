@@ -9,7 +9,6 @@ module DamageReportsHelper
 
   def character_input(weapon_attr_modifier, level)
     total_character_damage = ((level * 10 ) + weapon_attr_modifier).to_f
-
   end 
 
   def calculate_min_damage(weapon_min, character_input, attack_dmg, element_boost, element_impact = nil)
@@ -20,7 +19,7 @@ module DamageReportsHelper
       boost_amt = base_amount * element_dmg
       return base_amount + boost_amt
     end 
-    base_amount < 1 ? base_amount * 100 : base_amount
+    base_amount
   end 
 
   def calculate_max_damage(weapon_max, character_input, attack_dmg, element_boost, element_impact = nil)
@@ -60,11 +59,10 @@ module DamageReportsHelper
 
   def last_damage_report_table
     reports = DamageReport.first(3)
-    attacks = Attack.all 
     table_array = []
     first_row = ["Attack","Minimum", "Maximum", "DPS"]
     reports.each_with_index do |report, index|
-      damage_stats = [attacks[index][:attack_name], report.min_damage, report.max_damage, report.damage_per_second]
+      damage_stats = [report.attack.attack_name, report.min_damage, report.max_damage, report.damage_per_second]
       table_array << damage_stats
     end 
     table_array.unshift(first_row)
@@ -72,11 +70,10 @@ module DamageReportsHelper
 
   def all_damage_reports_table
     reports = DamageReport.all
-    attacks = Attack.all 
     table_array = []
-    first_row = ["Attack", "Creation Date:", "Minimum", "Maximum", "DPS"]
+    first_row = ["Attack","Created on:", "Minimum", "Maximum", "DPS"]
     reports.each_with_index do |report, index|
-      damage_stats = [attacks[index][:attack_name], set_date(report.created_at), report.min_damage, report.max_damage, report.damage_per_second]
+      damage_stats = [(report.attack.attack_name || "--"), set_date(report.created_at), report.min_damage, report.max_damage, report.damage_per_second]
       table_array << damage_stats
     end 
     table_array.unshift(first_row)
