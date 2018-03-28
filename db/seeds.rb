@@ -44,8 +44,8 @@ Attribute.create!(vitality)
 ##Punch Attack
 punch = {:attack_name => "Plain-Old",
          :attack_type => "Punch", 
-         :APS_impact => 1, 
-         :DMG_impact => 1, 
+         :APS_impact => 100, 
+         :DMG_impact => 100, 
          :element => "Physical", 
          :character_id => 1
 }
